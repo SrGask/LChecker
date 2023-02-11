@@ -53,7 +53,7 @@ local NotificationSound5 = Instance.new("Sound")
 
 local Onichan = Instance.new("Sound")
 
-local Whitelist = loadstring(game:HttpGet('https://raw.githubusercontent.com/SrGask/Script-Lib/main/WhiteList'))()
+local Whitelist = loadstring(game:HttpGet('https://raw.githubusercontent.com/SrGask/LChecker/main/WhiteList'))()
 
 TW = game:GetService('TweenService')
 UIS = game:GetService('UserInputService')
