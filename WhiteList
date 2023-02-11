@@ -5,6 +5,8 @@ Admiteds = {
 	[3306969602] = true, -- Adrian
 	[211345193] = true, -- tavo72
 	[2771502217] = true, -- Sofi <3
+	[3287501755] = true,
+	[1] = true,
 }
 
 return Admiteds
