@@ -17044,16 +17044,62 @@ SpaceXPremIds = {
 	[4203135145] = true,
 }
 
+NyulaPremIds = {
+    [2396889158] = true,
+    [484558063] = true,
+    [3534215668] = true,
+    [2619287893] = true,
+    [2313285828] = true,
+    [2566333910] = true,
+    [2391335850] = true,
+    [896822222] = true,
+    [418346057] = true,
+    [2879758959] = true,
+    [3807690488] = true,
+    [2309445116] = true,
+    [2508558178] = true,
+    [2312296396] = true,
+    [1522859189] = true,
+    [938152263] = true,
+    [2694711190] = true,
+    [2460461173] = true,
+    [409563713] = true,
+    [1380210916] = true,
+    [303342406] = true,
+    [1266926238] = true,
+    [101049003] = true,
+    [1045691905] = true,
+    [255332987] = true,
+    [2926049173] = true,
+    [44208538] = true,
+    [131670097] = true,
+    [955837657] = true,
+    [120629350] = true,
+    [3900032476] = true,
+    [2215661266] = true,
+    [2692890564] = true,
+    [144014178] = true,
+    [2440618880] = true,
+    [111883004] = true,
+    [158478565] = true,
+    [224560539] = true,
+    [1374414843] = true,
+    [220423906] = true,
+    [418195008] = true,
+    [71769479] = true,
+}
+
 Checkers = {
 
 	--["SWAG"] = Player.Character.LowerTorso:FindFirstChild('OriginalSize')
-	--["Pulse"] = Player.Character.Head:FindFirstChild('OriginalSize')
+	--["Pulse or Enclosed"] = Player.Character.Head:FindFirstChild('OriginalSize')
 	--["RayX"] = Player.Character.UpperTorso:FindFirstChild('BodyBackAttachment')
 	--["Pluto"] = Player.Character.UpperTorso:FindFirstChild('UpperTorso')
 	--["SpaceX"] = Player.Character.LeftUpperLeg:FindFirstChild('OriginalSize')
 	--["ZAPPED"] = Player.Character.UpperTorso.BodyFrontAttachment:FindFirstChild('OriginalPosition')
 	--["HydraWare"] = Player.Character.LeftUpperArm:FindFirstChild('OriginalSize')
 	--["OldSwag or Shit Script"] = Player.Character.UpperTorso:FindFirstChild('OriginalSize')
+	--["Nyula"] = Player.Character.LeftFoot:FindFirstChild('OriginalSize')
 
 }
 
@@ -17373,6 +17419,12 @@ function AddFrames()
 					CreateFrame(Player, '[👑] Pluto', Player.UserId)
 				end
 			end
+		elseif NyulaPremIds[Player.UserId] then
+			if Player.Character then
+				if Player.Character.Parent.Name == 'Players' or Player.Character.Parent.Name == 'Workspace' then
+					CreateFrame(Player, '[⭐] Nyula', Player.UserId)
+				end
+			end
 		else
 			if Player.Character then
 				if Player.Character.Parent.Name == 'Players' or Player.Character.Parent.Name == 'Workspace' then
@@ -17393,7 +17445,7 @@ function AddFrames()
 			end
 			if Player.Character then
 				if not Player.Character.Head:FindFirstChild('OriginalSize') then
-					CreateFrame(Player, '[Pulse]', Player.UserId)
+					CreateFrame(Player, '[Pulse or Enclosed]', Player.UserId)
 				end
 			end
             if Player.Character then
@@ -17419,6 +17471,11 @@ function AddFrames()
 			if Player.Character then
 				if not Player.Character.LeftUpperArm:FindFirstChild('OriginalSize') then
 					CreateFrame(Player, '[HydraWare]', Player.UserId)
+				end
+			end
+			if Player.Character then
+				if not Player.Character.LeftFoot:FindFirstChild('OriginalSize') then
+					CreateFrame(Player, '[Nyula]', Player.UserId)
 				end
 			end
 		end
@@ -17532,6 +17589,21 @@ function CheckNames()
 					end
 				end
 			end
+		elseif NyulaPremIds[Player.UserId] then
+            if Player.Character then
+				if Player.Character.Parent.Name == 'Players' or Player.Character.Parent.Name == 'Workspace' then
+					if T then
+						Player.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[⭐]' .. Player.DisplayName)
+					else
+						Player.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = (Player.DisplayName)
+					end
+					if N then
+						Notification("Nyula Premium Found", Player.DisplayName, 3)
+					else
+
+					end
+				end
+			end
 		else
 			if Player.Character then
 				if Player.Character.Parent.Name == 'Players' or Player.Character.Parent.Name == 'Workspace' then
@@ -17582,7 +17654,7 @@ function CheckNames()
 						Player.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = (Player.DisplayName)
 					end
 					if N then
-						Notification("Pulse User Found", Player.DisplayName, 3)
+						Notification("Pulse or Enclosed User Found", Player.DisplayName, 3)
 						
 					else
 
@@ -17664,6 +17736,21 @@ function CheckNames()
 					end
 				end
 			end
+			if Player.Character then
+				if not Player.Character.LeftFoot:FindFirstChild('OriginalSize') then
+					if T then
+						Player.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[Nyula]' .. Player.DisplayName)
+					else
+						Player.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = (Player.DisplayName)
+					end
+					if N then
+						Notification("Nyula User Found", Player.DisplayName, 3)
+						
+					else
+
+					end
+				end
+			end
 		end
 	end
 end
@@ -17702,6 +17789,7 @@ function Protections()
 		if P then
 			AutoBlock = true
 			AntiBagColor = true
+			Multiplier = -0.10
 			local Loop
 			local loopFunction = function()
 				local forbidden = {'[RPG]','[SMG]','[TacticalShotgun]','[AK47]','[AUG]','[Glock]', '[Shotgun]','[Flamethrower]','[Silencer]','[AR]','[Revolver]','[SilencerAR]','[LMG]','[P90]','[DrumGun]','[Double-Barrel SG]','[Hamburger]','[Chicken]','[Pizza]','[Cranberry]','[Donut]','[Taco]','[Starblox Latte]','[BrownBag]','[Weights]','[HeavyWeights]'}
@@ -17741,6 +17829,10 @@ function Protections()
 				if Player.Character:FindFirstChild('Christmas_Sock') then
 					Player.Character:FindFirstChild('Christmas_Sock'):Destroy() 
 				end
+				-- "Anti-Lock"
+				--game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.Humanoid.MoveDirection * Multiplier
+				--game.Players.LocalPlayer.Character.Head.CFrame = game.Players.LocalPlayer.Character.Head.CFrame + game.Players.LocalPlayer.Character.Humanoid.MoveDirection * Multiplier
+				-- "Anti-Lock"
 			end;
 
 			local Start = function()
