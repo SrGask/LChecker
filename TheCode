@@ -3,9 +3,13 @@
 -----------------------------------------------------------------------------
 -- By: Spooky Family#1866
 
+Version = 1.1
+
 if not game:IsLoaded() then
 	game.Loaded:Wait()
 end
+
+print("[TC]: Loding")
 
 local Checker = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
@@ -54,6 +58,7 @@ local NotificationSound5 = Instance.new("Sound")
 local Onichan = Instance.new("Sound")
 
 local Whitelist = loadstring(game:HttpGet('https://raw.githubusercontent.com/SrGask/LChecker/main/WhiteList'))()
+local ImportantHolder = loadstring(game:HttpGet('https://raw.githubusercontent.com/SrGask/LChecker/main/Yes'))()
 
 TW = game:GetService('TweenService')
 UIS = game:GetService('UserInputService')
@@ -146,9 +151,16 @@ delay(math.random(3,5), function()
 		
 		Onichan:Play()
 	else
-
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "[" ..identifyexecutor().. "]";
+			Text = "lol";
+			Duration = 3;
+		})
+		
 	end
 end)
+
+print("[TC]: Checked, Load Frames")
 
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
@@ -372,6 +384,8 @@ UICorner_10.Parent = MuteNotificationsButton
 
 UITextSizeConstraint_9.Parent = MuteNotificationsButton
 UITextSizeConstraint_9.MaxTextSize = 14
+
+print("[TC]: Frames Loaded, Load Ids")
 
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
@@ -17103,6 +17117,10 @@ Checkers = {
 
 }
 
+print("[TC]: Ids Loaded, Load Code")
+
+wait(0.5)
+
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
@@ -17142,11 +17160,23 @@ ARE = false
 
 View = false
 
+print("[TC]: Load Fuctions")
+
+wait(0.5)
+
 function view(Name)
 	wait()
 	if game.Players:FindFirstChild(Name) then
 		if game.Players:FindFirstChild(Name).Character then
-			game.Workspace:FindFirstChildWhichIsA('Camera').CameraSubject = game.Players:FindFirstChild(Name).Character.HumanoidRootPart
+			local OFFSET = Vector3.new(0, 0, 0)
+			game.Workspace:FindFirstChildWhichIsA('Camera').CameraSubject = game.Players:FindFirstChild(Name).Character.Humanoid
+			game.Workspace:FindFirstChildWhichIsA('Camera').Focus = game.Players:FindFirstChild(Name).Character:FindFirstChild("HumanoidRootPart").CFrame
+			if game.Players:FindFirstChild(Name).Character:FindFirstChildWhichIsA("Tool") then
+				local Mouse
+				if MainEvent then
+					--game.Workspace:FindFirstChildWhichIsA('Camera').CFrame = CFrame.new(game.Players:FindFirstChild(Name).Gui)
+				end
+			end
 		else
 			View = false
 			Notification("[ ! ]", "Stoping Viewing: "..Name.." | Player Character not found!", 3)
@@ -17156,7 +17186,7 @@ function view(Name)
 		end
 	else
 		View = false
-		Notification("[ ! ]", "Stoping Viewing| Player not found!", 3)
+		Notification("[ ! ]", "Stoping Viewing | Player not found!", 3)
 		if S then
 			NotificationSound3:Play()
 		end
@@ -17186,7 +17216,7 @@ function CreateFrame(plr, Rank, ID)
 		local UserImage = Instance.new("ImageLabel")
 		local UICorner = Instance.new("UICorner")
 		local UICorner_2 = Instance.new("UICorner")
-		local UserName = Instance.new("TextLabel")
+		local UserName = Instance.new("TextButton")
 		local UICorner_3 = Instance.new("UICorner")
 		local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
 		local UserRank = Instance.new("TextLabel")
@@ -17329,8 +17359,16 @@ function CreateFrame(plr, Rank, ID)
 		UITextSizeConstraint_5.Parent = TPButton
 		UITextSizeConstraint_5.MaxTextSize = 8
 
+		UserName.Activated:Connect(function()
+			setclipboard(plr.DisplayName)
+			Notification("[✅]", "Copied", 3)
+			if S then
+				NotificationSound2:Play()
+			end
+		end)
+
 		UserId.Activated:Connect(function()
-			setclipboard(UserId.Text)
+			setclipboard(tostring(ID))
 			Notification("[✅]", "Copied", 3)
 			if S then
 				NotificationSound2:Play()
@@ -17584,7 +17622,7 @@ function CheckNames()
 					end
 				end
 			end
-        elseif PlutoPremIds[Player.UserId] then
+        elseif PlutoAdmins[Player.UserId] then
             if Player.Character then
 				if Player.Character.Parent.Name == 'Players' or Player.Character.Parent.Name == 'Workspace' or Player.Character.Parent.Name == 'Workspace̩' or Player.Character.Parent.Name == 'Characters' then
 					if T then
@@ -17883,6 +17921,10 @@ spawn(function() -- Network
     end)
 end)
 
+print("[TC]: Fuctions Loaded, Load Some Scripts")
+
+wait(0.5)
+
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
@@ -18026,7 +18068,7 @@ ServerHopButton.Activated:Connect(function()
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SrGask/LChecker/main/TheCode", true))()
 		end)
 	else
-		print('failed to find server')
+		print('[TC]: failed to find server')
 	end
 end)
 
@@ -18067,6 +18109,11 @@ game.Players.PlayerRemoving:Connect(function(player)
 	end
 end)
 
+print("[TC]: All Loaded!")
+print("[TC]: Welcome ", Player.DisplayName, " To The Check List!")
+print("[TC]: Thanks For buying ❤")
+print("[TC]: TC Version: ", Version)
+
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
@@ -18084,7 +18131,7 @@ coroutine.resume(coroutine.create(function()
 				end
 			end
 			if ARE then
-				print("Refreshing")
+				print("[TC]: Refreshing")
 				Notification("🔄", "Refreshing", 3)
 				if S then
 					NotificationSound2:Play()
