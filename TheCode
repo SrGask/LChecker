@@ -17852,23 +17852,29 @@ function Protections()
 				local Found = false
 				if game.Workspace:FindFirstChild("Players") then
 					for _,v in pairs(game.Workspace.Players:GetChildren()) do
-						if v:FindFirstChild("LeftHand") or v:FindFirstChild("RightHand") then
-							if (v.LeftHand.Position - Player.Character.HumanoidRootPart.Position).Magnitude <= MaxDistance or (v.RightHand.Position - Player.Character.HumanoidRootPart.Position).Magnitude <= MaxDistance then
-								if v.BodyEffects.Attacking.Value == true and not table.find(forbidden, v:FindFirstChildWhichIsA('Tool').Name ) and v.Name ~= Player.Name then
-									Found = true
-									MainEvent:FireServer('Block', Player.Name)
+						if v:IsA("Model") then
+							if v:FindFirstChild("LeftHand") or v:FindFirstChild("RightHand") then
+								if (v.LeftHand.Position - Player.Character.HumanoidRootPart.Position).Magnitude <= MaxDistance or (v.RightHand.Position - Player.Character.HumanoidRootPart.Position).Magnitude <= MaxDistance then
+									if v.BodyEffects.Attacking.Value == true and not table.find(forbidden, v:FindFirstChildWhichIsA('Tool').Name ) and v.Name ~= Player.Name then
+										Found = true
+										MainEvent:FireServer('Block', Player.Name)
 
+									end
 								end
+							else
+								print("[TC]: ",v.Name," No has UpperTorso!")
 							end
-						else
-							print(v.." No has UpperTorso!")
 						end
 					end
 				else
 
 				end
 				if Found == false and HoldingF == false then
-					if Player.Character.BodyEffects:FindFirstChild('Block') then Player.Character.BodyEffects.Block:Destroy() end
+					if Player.Character.BodyEffects:FindFirstChild('Block') then 
+						Player.Character.BodyEffects.Block:Destroy()
+					else
+
+					end
 				end
 				if Player.Character:FindFirstChild('Christmas_Sock') then
 					Player.Character:FindFirstChild('Christmas_Sock'):Destroy() 
@@ -18143,4 +18149,4 @@ coroutine.resume(coroutine.create(function()
 			end
 		end
 	end
-end))
+end)) 
