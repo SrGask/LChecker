@@ -9,6 +9,10 @@ if not game:IsLoaded() then
 	game.Loaded:Wait()
 end
 
+if game.CoreGui:FindFirstChild("Checker") then
+	game.CoreGui.Checker:Destroy()
+end
+
 print("[TC]: Loding")
 
 local Checker = Instance.new("ScreenGui")
